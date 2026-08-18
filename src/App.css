@@ -171,8 +171,8 @@ padding-bottom: 30px;}
 .work__list-item .work__txt h5{font-size: 28px; line-height: 1.3em; font-weight: 600; letter-spacing: -2%;}
 .work__list-item .work__txt{display: flex; gap: 60px; flex-direction: column;}
 .work__list-item .work-tag-group{display: flex; gap: 4px; flex-wrap: wrap; margin-bottom: 4px;}
-.work__list-item .work-tag-group span{font-family: var(--mono); color: #6e6e6e; font-size: 15px; background: #EFEFEF;
-padding: 2px; color: var(--accent); font-weight: 600;}
+.work__list-item .work-tag-group span{color: #6e6e6e; font-size: 15px; background: #EFEFEF;
+padding: 2px; color: var(--accent); font-weight: 500;}
 .project-page .work__list-item .work-tag-group.tomato span{color: var(--accent);}
 .work__list-item .work-txt-row p{word-break: keep-all; font-size: 15px; opacity: .8;}
 .work__list-item .work-txt-row.type02 > span{font-size: 15px; margin-bottom: 12px; display: block; color: #666;} 
