@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { works } from "../constants/work";
+import useScrollSquish from "../hooks/useScrollSquish";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -19,6 +20,9 @@ export default function Work() {
   const navigate = useNavigate();
   const sectionRef = useRef(null);
   const worksBySlug = Object.fromEntries(works.map((w) => [w.slug, w]));
+
+  // padding은 li(.work__list-item) 자체가 아니라 안쪽 .work__txt(padding: 50px 20px)에 있음
+  useScrollSquish(sectionRef, ".work__list-item .work__txt", { amount: 20 });
 
   const projects = WORK_SECTION_ITEMS.map(({ slug, description }) => {
     const w = worksBySlug[slug];
@@ -52,6 +56,17 @@ export default function Work() {
           trigger: ".work__list",
           start: "top 80%",
         },
+      });
+
+      // 이미지가 스크롤로 화면에 닿으면(진입하면) 살짝 확대되고,
+      // 화면을 완전히 벗어나면 다시 원래 크기로 (toggleClass가 자동으로 on/off)
+      const imgBoxes = gsap.utils.toArray(".work__list-item .img", sectionRef.current);
+      imgBoxes.forEach((box) => {
+        ScrollTrigger.create({
+          trigger: box,
+          start: "top 85%",
+          toggleClass: { targets: box, className: "is-zoomed" },
+        });
       });
     }, sectionRef);
 

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { projects } from "../constants/project";
+import useScrollSquish from "../hooks/useScrollSquish";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -19,6 +20,10 @@ const ProductSection = () => {
   const [showCursor, setShowCursor] = useState(false);
   const cursorRef = useRef(null);
   const sectionRef = useRef(null);
+
+  // padding은 li 자체가 아니라 안쪽 .product__text(padding: 2.4vw 0, vw 단위)에 있음.
+  // 상대값(-=, +=)이라 vw 기반이어도 반응형 그대로 유지됨
+  useScrollSquish(sectionRef, ".product__list li .product__text", { amount: 12 });
 
   const products = PRODUCT_SLUGS.map((slug) =>
     projects.find((p) => p.slug === slug)
@@ -71,23 +76,25 @@ const ProductSection = () => {
               {products.map((product) => (
                 <li key={product.id}>
                   <Link
-  to={`/project/${product.slug}`}
-  onMouseEnter={() => handleMouseEnter(product.imageId)}
-  onMouseLeave={handleMouseLeave}
->
-  <figure className="img__box">
-    <img src={product.image} alt={product.title} />
-  </figure>
-  <div className="product__text">
-    <h5>{product.title}</h5>
-    <p className="hash">
-      {product.tags.split(" ").map((tag, index) => (
-        <span key={index}>{tag}</span>
-      ))}
-    </p>
-    <p className="desc">{TYPE_LABEL[product.type] ?? product.type}</p>
-  </div>
-</Link>
+                    to={`/project/${product.slug}`}
+                    onMouseEnter={() => handleMouseEnter(product.imageId)}
+                    onMouseLeave={handleMouseLeave}
+                  >
+                    <figure className="img__box">
+                      <img src={product.image} alt={product.title} />
+                    </figure>
+                    <div className="product__text">
+                      <h5>{product.title}</h5>
+                      <p className="hash">
+                        {product.tags.split(" ").map((tag, index) => (
+                          <span key={index}>{tag}</span>
+                        ))}
+                      </p>
+                      <p className="desc">
+                        {TYPE_LABEL[product.type] ?? product.type}
+                      </p>
+                    </div>
+                  </Link>
                 </li>
               ))}
             </ul>

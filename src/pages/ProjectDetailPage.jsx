@@ -34,8 +34,14 @@ function buildLinkInfo(project) {
   if (project.frontendTech) {
     list.push({ label: 'Frontend', value: project.frontendTech });
   }
+  if (project.uiuxTech) {
+    list.push({ label: 'UI / UX & Interaction', value: project.uiuxTech });
+  }
   if (project.collaborationTech) {
     list.push({ label: 'Collaboration', value: project.collaborationTech });
+  }
+  if (project.etcTech) {
+    list.push({ label: 'Etc', value: project.etcTech });
   }
   if (project.role) {
     list.push({ label: '주요 역할', value: project.role });
@@ -43,12 +49,19 @@ function buildLinkInfo(project) {
   if (project.responsibilities?.length) {
     list.push({ label: '담당 업무', value: project.responsibilities });
   }
-  if (project.githubUrlBackend) {
+
+  // 깃허브 링크: Flutter까지 있으면 3개(Frontend/Backend/Flutter), 아니면 기존 방식
+  if (project.githubUrlFlutter) {
+    if (project.githubUrl) list.push({ label: 'Frontend (GitHub)', href: project.githubUrl });
+    if (project.githubUrlBackend) list.push({ label: 'Backend (GitHub)', href: project.githubUrlBackend });
+    list.push({ label: 'Flutter (GitHub)', href: project.githubUrlFlutter });
+  } else if (project.githubUrlBackend) {
     list.push({ label: 'Frontend (GitHub)', href: project.githubUrl });
     list.push({ label: 'Backend (GitHub)', href: project.githubUrlBackend });
   } else if (project.githubUrl) {
     list.push({ label: '깃허브', href: project.githubUrl });
   }
+
   if (project.deployUrl) {
     list.push({ label: 'URL', href: project.deployUrl, value: '배포 URL' });
   }
@@ -64,6 +77,13 @@ function buildRecords(project) {
   return project.records.map((r) =>
     typeof r === 'string' ? { text: r, href: '#' } : { text: r.text, href: r.href }
   );
+}
+
+// demos(배열) 또는 demoVideoUrl(단일 값) 둘 다 지원 - ProjectSubLayout엔 항상 배열로 넘김
+function buildDemos(project) {
+  if (project.demos?.length) return project.demos;
+  if (project.demoVideoUrl) return [{ label: '시연 영상', file: project.demoVideoUrl }];
+  return [];
 }
 
 function ProjectDetailPage() {
@@ -105,6 +125,8 @@ function ProjectDetailPage() {
 
   const description = project.detailDescription ?? content?.description ?? project.shortDescription;
   const linkInfo = buildLinkInfo(project);
+  const records = buildRecords(project);
+  const demos = buildDemos(project);
 
   return (
     <div className="wrap">
@@ -112,6 +134,9 @@ function ProjectDetailPage() {
         title={project.title}
         description={description}
         linkInfo={linkInfo}
+        demos={demos}
+        presentation={project.presentation}
+        records={records}
       />
     </div>
   );

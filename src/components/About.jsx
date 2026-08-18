@@ -1,11 +1,18 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import useScrollSquish from "../hooks/useScrollSquish";
 
 gsap.registerPlugin(ScrollTrigger);
 
+const HELLO_TEXT = "Hello.";
+
 export default function About() {
   const sectionRef = useRef(null);
+  const titleRef = useRef(null);
+
+  // .about__item은 CSS에 padding-bottom: 30px만 있음 (padding-top 없음)
+  useScrollSquish(sectionRef, ".about__item", { amount: 12, sides: ["bottom"] });
 
   useEffect(() => {
     let ctx = gsap.context(() => {
@@ -44,6 +51,27 @@ export default function About() {
           start: "top 80%",
         },
       });
+
+      // "Hello." 글자별 웨이브(꿀렁꿀렁) 애니메이션
+      // 화면에 들어오면 글자 하나씩 시간차를 두고 위아래로 무한 반복
+      const chars = titleRef.current?.querySelectorAll(".about-hello__char");
+      if (chars?.length) {
+        gsap.to(chars, {
+          y: -12,
+          duration: 0.5,
+          ease: "sine.inOut",
+          stagger: {
+            each: 0.06,
+            repeat: -1,
+            yoyo: true,
+          },
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top 75%",
+            toggleActions: "play pause resume pause",
+          },
+        });
+      }
     }, sectionRef);
 
     return () => ctx.revert();
@@ -55,8 +83,14 @@ export default function About() {
         <div className="inner">
           <h2 className="main-title">About Me</h2>
           <div className="about-txt">
-            <div className="about-txt__title">
-              <h2>Hello.</h2>
+            <div className="about-txt__title" ref={titleRef}>
+              <h2 className="about-hello">
+                {HELLO_TEXT.split("").map((char, i) => (
+                  <span key={i} className="about-hello__char">
+                    {char === " " ? "\u00A0" : char}
+                  </span>
+                ))}
+              </h2>
               <p>
                 안녕하세요. 사용자 중심의 웹 경험을 만드는 웹 퍼블리셔 이유빈입니다.
                 퍼블리싱뿐만 아니라 기획과 디자인 경험을 바탕으로, 의도를 정확히

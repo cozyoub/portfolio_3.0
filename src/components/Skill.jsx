@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import useScrollSquish from "../hooks/useScrollSquish";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -31,6 +32,10 @@ export default function Skill() {
   const [hoverIndex, setHoverIndex] = useState(null);
   const [autoIndex, setAutoIndex] = useState(0); // 자동 순환 인덱스
   const sectionRef = useRef(null);
+
+  // .skill-list__item은 원래 padding이 없고 gap으로 간격을 줌.
+  // 아래 CSS에 padding을 살짝 추가해야 이 효과가 자연스럽게 보임 (설명 참고)
+  useScrollSquish(sectionRef, ".skill-list__item", { amount: 8 });
 
   // 마우스가 올라가 있으면 hover 우선, 아니면 자동 순환 값 사용
   const activeIndex = hoverIndex !== null ? hoverIndex : autoIndex;
