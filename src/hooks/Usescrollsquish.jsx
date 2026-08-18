@@ -22,6 +22,7 @@ gsap.registerPlugin(ScrollTrigger);
  * @param {number} options.amount - 줄어드는 정도(px), 기본 20
  * @param {("top"|"bottom")[]} options.sides - 움직일 방향, 기본 ['top','bottom']
  */
+
 export default function useScrollSquish(
   containerRef,
   selector,
