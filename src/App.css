@@ -99,6 +99,7 @@ padding-bottom: 30px;}
 }
 
 /* skill */
+.sill{overflow: hidden;}
 .skill-list {
   display: flex;
   flex-direction: column;
@@ -118,7 +119,7 @@ padding-bottom: 30px;}
   font-family: var(--mono);
   color: #e9e9e9;
   transition: color 0.35s ease;
-  line-height: 1.1;
+  line-height: 1.1; z-index: 1;
 }
 
 .skill-list__item.is-active p {
@@ -129,15 +130,14 @@ padding-bottom: 30px;}
 .skill-list__image {
   position: absolute;
   top: 50%;
-  left: calc(80%);
+  left: calc(90%);
   transform: translateY(-50%) scale(0.9);
   width: clamp(160px, 14vw, 230px);
   height: clamp(110px, 10vw, 160px);
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.35s ease, transform 0.35s ease;
-  z-index: 10;
-  mix-blend-mode: color-dodge;
+  z-index: 10; mix-blend-mode: multiply;
 }
 
 .skill-list__item.is-active .skill-list__image {
@@ -154,9 +154,10 @@ padding-bottom: 30px;}
 /* 반응형: 태블릿부터 옆 공간 부족하니 이미지 숨김 */
 @media (max-width: 851px) {
   .skill-list__image {
-    left: calc(50%);
+    left: calc(10%);
   transform: translateY(-50%) scale(0.9);
-   
+  bottom: 0;
+   z-index: 0; display: none;
   }
 
   .skill-list {
