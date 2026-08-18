@@ -129,14 +129,15 @@ padding-bottom: 30px;}
 .skill-list__image {
   position: absolute;
   top: 50%;
-  left: calc(100% + 40px);
-  transform: translateY(-70%) scale(0.9);
+  left: calc(80%);
+  transform: translateY(-50%) scale(0.9);
   width: clamp(160px, 14vw, 230px);
   height: clamp(110px, 10vw, 160px);
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.35s ease, transform 0.35s ease;
   z-index: 10;
+  mix-blend-mode: color-dodge;
 }
 
 .skill-list__item.is-active .skill-list__image {
@@ -153,7 +154,9 @@ padding-bottom: 30px;}
 /* 반응형: 태블릿부터 옆 공간 부족하니 이미지 숨김 */
 @media (max-width: 851px) {
   .skill-list__image {
-    display: none;
+    left: calc(50%);
+  transform: translateY(-50%) scale(0.9);
+   
   }
 
   .skill-list {
