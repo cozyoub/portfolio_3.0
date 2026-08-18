@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { projects } from "../constants/project";
-import useScrollSquish from "../hooks/useScrollSquish";
+import useScrollSquish from "../hooks/useScrollSquish.jsx";
 
 gsap.registerPlugin(ScrollTrigger);
 

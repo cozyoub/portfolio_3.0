@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { works } from "../constants/work";
-import useScrollSquish from "../hooks/useScrollSquish";
+import useScrollSquish from "../hooks/useScrollSquish.jsx";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -23,7 +23,7 @@ export default function Work() {
 
   // padding은 li(.work__list-item) 자체가 아니라 안쪽 .work__txt(padding: 50px 20px)에 있음
   useScrollSquish(sectionRef, ".work__list-item .work__txt", { amount: 20 });
-  
+
 
   const projects = WORK_SECTION_ITEMS.map(({ slug, description }) => {
     const w = worksBySlug[slug];

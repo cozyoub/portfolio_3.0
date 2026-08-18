@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import useScrollSquish from "../hooks/useScrollSquish";
+import useScrollSquish from "../hooks/useScrollSquish.jsx";
 
 gsap.registerPlugin(ScrollTrigger);
 
