@@ -40,14 +40,14 @@ export const works = [
       "CSS 클래스 스코프 및 keyframes 네이밍 규칙 수립으로 페이지 간 스타일 충돌 방지",
     ],
     relatedLinks: [
-      { text: "동연에스엔티", url: "http://renew.dysnt.co.kr/" },
+      { text: "동연에스엔티", url: "https://www.dysnt.co.kr/" },
     ],
     githubUrl: [
       { label: "Frontend", url: "https://github.com/cozyoub/dy_web_front" },
       { label: "Backend", url: "https://github.com/cozyoub/dy_web_back" },
     ],
     backendGithubUrl: "https://github.com/cozyoub/dy_web_back",
-    deployUrl: "http://renew.dysnt.co.kr/",
+    deployUrl: "https://www.dysnt.co.kr/",
     detailDescription:
       "동연에스엔티의 기업 웹사이트를 Spring Boot 백엔드와 React/Vite 프론트엔드로 처음부터 구축한 프로젝트입니다. 메인 페이지 컴포넌트부터 웹진·공지사항 CRUD, 관리자 페이지, 문의 이메일 연동까지 프론트엔드와 백엔드를 아우르며 전 과정을 담당했습니다.",
     solutionTag: ["React", "GSAP", "Spring Boot","Java","Mysql"],
