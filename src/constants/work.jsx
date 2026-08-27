@@ -18,11 +18,11 @@ export const works = [
     type: "개인 100%",
     image: "/images/pj08.jpg",
     shortDescription:
-      "동연에스엔티 기업 사이트, React/Vite와 Spring Boot로 재구축. 메인 애니메이션부터 웹진 CRUD까지 프론트·백엔드 전담.",
-    period: "2026.04 ~ 진행중",
+      "동연에스엔티 기업 사이트, React/Vite와 Spring Boot로 재구축. 메인 애니메이션부터 웹진 CRUD, 다국어 페이지, 디자인·프론트·백엔드 전담.",
+    period: "2026.05 ~ 2026.08",
     contribution: "프론트엔드 100%, 백엔드 100%, 디자인 100%",
     techStack: "React, Vite, Spring Boot, GSAP, Swiper, Java",
-    role: "프론트엔드 개발, 백엔드 API 개발, 관리자 CRUD 설계, 웹 퍼블리싱 및 디자인",
+    role: "프론트엔드 개발, 백엔드 API 개발, 관리자 CRUD 설계, 웹 퍼블리싱 및 디자인, 서버 배포·운영",
     responsibilities: [
       "메인/서브 페이지 컴포넌트 개발 (MainVisual, BusinessArea, PromotionVd, ConstructionCase, FactoryAI, PartnerSection, Contact 등)",
       "GSAP ScrollTrigger 기반 스크롤 인터랙션 및 애니메이션 구현",
@@ -31,13 +31,14 @@ export const works = [
       "공지사항 게시판 CRUD 및 페이지네이션, 카테고리 필터링 구현",
       "Spring Boot 기반 백엔드 API 설계 및 SMTP 이메일(문의하기) 연동",
       "전체 라우팅/서브레이아웃 구조 설계 및 브레드크럼, 모바일 메뉴 네비게이션 구현",
-      "Vercel 배포 환경 구성 및 빌드 이슈 해결",
+      "React Router 기반 다국어(영문) 페이지 라우팅 구조 설계 (/en 서브경로, LanguageContext, 언어 전환 UI)",
     ],
     achievements: [
       "GSAP 애니메이션 라이프사이클 이슈(페이지 이동 시 트리거 파괴) 원인 규명 및 구조 개선",
       "gsap.context() + ctx.revert() 패턴과 matchMedia 반응형 분기(851px)로 안정적인 애니메이션 구조 정립",
       "기존 공지사항 패턴을 재사용하여 웹진 CRUD 기능 신속 구축, 카테고리 단순화(웹진/초대장) 및 발행일 기반 자동 라벨링 적용",
-      "CSS 클래스 스코프 및 keyframes 네이밍 규칙 수립으로 페이지 간 스타일 충돌 방지",
+      "Apache mod_rewrite 설정으로 SPA 새로고침 시 404 오류 해결, 서버-클라이언트 타임존 불일치 등 배포 초기 인프라 이슈 진단 및 해결",
+      "복잡한 표 기반 HTML 콘텐츠(이메일 뉴스레터) 지원을 위한 원본 HTML 모드 및 iframe 자동 렌더링 분기 처리 구현, 기존 게시글 하위 호환 유지",
     ],
     relatedLinks: [
       { text: "동연에스엔티", url: "https://www.dysnt.co.kr/" },
@@ -49,8 +50,8 @@ export const works = [
     backendGithubUrl: "https://github.com/cozyoub/dy_web_back",
     deployUrl: "https://www.dysnt.co.kr/",
     detailDescription:
-      "동연에스엔티의 기업 웹사이트를 Spring Boot 백엔드와 React/Vite 프론트엔드로 처음부터 구축한 프로젝트입니다. 메인 페이지 컴포넌트부터 웹진·공지사항 CRUD, 관리자 페이지, 문의 이메일 연동까지 프론트엔드와 백엔드를 아우르며 전 과정을 담당했습니다.",
-    solutionTag: ["React", "GSAP", "Spring Boot","Java","Mysql"],
+      "동연에스엔티의 기업 웹사이트를 Spring Boot 백엔드와 React/Vite 프론트엔드로 처음부터 구축한 프로젝트입니다. 메인 페이지 컴포넌트부터 웹진·공지사항 CRUD, 다국어(영문) 페이지, 관리자 페이지, 문의 이메일 연동, 실서버 배포·운영까지 프론트엔드와 백엔드를 아우르며 전 과정을 담당했습니다.",
+    solutionTag: ["React", "GSAP", "Spring Boot", "Java", "Mysql"],
     scopeTags: [
       { label: "프론트엔드", color: "pink" },
       { label: "백엔드", color: "coral" },
