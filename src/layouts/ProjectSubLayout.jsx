@@ -1,10 +1,48 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 /**
  * 프로젝트/작업 상세(서브) 페이지 공통 레이아웃
- * - 뒤로가기 버튼, 제목, 설명 블록, 주요 정보 및 링크 정보(dl),
- *   시연 영상 목록, 발표자료, 관련 기록(초록 버튼)
+ * - 뒤로가기 버튼, 제목, 설명 블록, 강조 버튼(cta), 디자인 시안(gallery),
+ *   주요 정보 및 링크 정보(dl), 시연 영상 목록, 발표자료, 관련 기록(초록 버튼)
  */
+
+// 시안 한 장 — lightSrc가 있으면 Dark / Light 전환
+function GalleryItem({ item }) {
+  const [theme, setTheme] = useState('dark');
+  const src = theme === 'light' && item.lightSrc ? item.lightSrc : item.src;
+
+  return (
+    <figure className="project-sub__gallery-item">
+      <a
+        href={src}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="project-sub__gallery-img"
+        aria-label={`${item.title} 시안 크게 보기`}
+      >
+        <img src={src} alt={`${item.title} 시안`} loading="lazy" />
+      </a>
+      <figcaption className="project-sub__gallery-caption">
+        <span>{item.title}</span>
+        {item.lightSrc && (
+          <span className="project-sub__gallery-toggle" role="group" aria-label="테마">
+            {['dark', 'light'].map((t) => (
+              <button
+                key={t}
+                type="button"
+                aria-pressed={theme === t}
+                onClick={() => setTheme(t)}
+              >
+                {t === 'dark' ? 'Dark' : 'Light'}
+              </button>
+            ))}
+          </span>
+        )}
+      </figcaption>
+    </figure>
+  );
+}
 
 // 실제 링크로 쓸 수 있는지 체크
 // - http(s):// 외부 URL이거나
@@ -21,6 +59,8 @@ function ProjectSubLayout({
   demos = [],
   presentation,
   records = [],
+  cta,
+  gallery = [],
 }) {
   return (
     <div className="wrap project-sub">
@@ -46,6 +86,29 @@ function ProjectSubLayout({
               <div className="project-sub__desc-text">{description}</div>
             )}
           </div>
+
+          {cta?.url && (
+            <a
+              href={cta.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="project-sub__cta"
+            >
+              {cta.text}
+              <span className="project-sub__cta-arrow" aria-hidden>↗</span>
+            </a>
+          )}
+
+          {gallery.length > 0 && (
+            <section className="project-sub__gallery">
+              <h2 className="project-sub__gallery-title">디자인 시안</h2>
+              <div className="project-sub__gallery-list">
+                {gallery.map((item, i) => (
+                  <GalleryItem key={i} item={item} />
+                ))}
+              </div>
+            </section>
+          )}
 
           {linkInfo.length > 0 && (
             <section className="project-sub__info">

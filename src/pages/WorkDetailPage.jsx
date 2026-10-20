@@ -52,6 +52,9 @@ function buildLinkInfo(work) {
   if (work.deployUrl) {
     list.push({ label: 'URL', href: work.deployUrl, value: '배포 URL' });
   }
+  if (work.cta) {
+    list.push({ label: '디자인 시스템', href: work.cta.url, value: '가이드 보기' });
+  }
   if (work.notionUrl) {
     list.push({ label: 'Notion', href: work.notionUrl, value: 'Notion에서 보기' });
   }
@@ -116,6 +119,8 @@ function WorkDetailPage() {
         backLabel="작업 목록으로"
         linkInfo={linkInfo}
         records={records}
+        cta={work.cta}
+        gallery={work.gallery}
       />
     </div>
   );

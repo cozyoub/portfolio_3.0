@@ -4,13 +4,64 @@
  * - detailDescription → project-sub__desc-block (요약 글)
  * - relatedLinks → 프로젝트 기록 (초록 버튼)
  * - notionUrl → 주요 정보 및 링크 정보에 Notion 버튼 (필수)
+ * - cta → 설명 아래 강조 버튼 (예: 디자인 시스템 바로가기) { text, url }
+ * - gallery → 디자인 시안 이미지 [{ title, src, lightSrc? }] (lightSrc가 있으면 Dark/Light 전환)
  * - solutionTag, scopeTags, contributionPercent → 메인 목록 카드 태그 전용 필드
  */
 
 const NOTION_LIST_URL =
   "https://www.notion.so/21e979b744f08028ba7bd433e058c2af?pvs=21";
 
+const DONGWON_DS_URL = "https://cozyoub.github.io/dongwon-pop-design-system/";
+
 export const works = [
+  {
+    id: "dongwon-mobility",
+    slug: "dongwon-mobility",
+    title: "동원모빌리티 생산관리(MES/POP) 화면 구축",
+    type: "TEAM",
+    image: "/images/dongwon/thumbnail.jpg",
+    shortDescription:
+      "넥사크로 기반 생산현장 화면의 UI 디자인, 디자인 시스템 정의, 화면 구현까지 전담",
+    period: "2026.09 ~ 2026.10",
+    contribution: "디자인 100%, 디자인 시스템 100%, 넥사크로 화면 퍼블리싱 100%",
+    techStack: "Nexacro, Figma, XML(FDL), CSS",
+    role: "생산현장 UI/UX 디자인, 넥사크로 UI 기준(디자인 시스템) 정의, 넥사크로 화면 구현",
+    responsibilities: [
+      "현장 작업자 환경(대형 터치 화면, PDA)을 고려한 생산관리 화면 UI 디자인",
+      "넥사크로 UI 기준 정의: 컬러 체계, 버튼·카드·탭·입력 등 공통 컴포넌트, cssclass 네이밍 규칙",
+      "생산실적 화면(9개 탭 구성) 넥사크로 FDL 직접 작성 및 카드형 레이아웃 구현",
+      "설비 상태(가동중)·비상호출 등 현장 상황을 즉시 인지할 수 있는 상태 표시 UI 설계",
+      "다크 테마 시안 기반 라이트 모드 컬러 체계 확장",
+      "PDA 단말 환경에 맞춘 넥사크로 화면 디자인 및 구현",
+    ],
+    achievements: [
+      "화면마다 달랐던 UI를 공통 기준으로 정리해 신규 화면 제작 시 일관성 확보", // TODO: 효과 수치 있으면 추가
+      "디자인과 화면 구현을 일원화하여 시안-구현 간 차이 및 수정 커뮤니케이션 최소화",
+      "웹 표준 CSS가 아닌 넥사크로 환경의 제약 안에서 디자인 시스템을 적용 가능한 형태로 구조화",
+      "테마 확장을 고려한 컬러 구조로 다크/라이트 모드 동시 대응",
+    ],
+    cta: { text: "디자인 시스템 가이드 바로가기", url: DONGWON_DS_URL },
+    gallery: [
+      { title: "로그인", src: "/images/dongwon/login.jpg" },
+      { title: "메뉴", src: "/images/dongwon/menu.jpg", lightSrc: "/images/dongwon/menu_l.jpg" },
+      { title: "생산실적 (서브)", src: "/images/dongwon/sub.jpg", lightSrc: "/images/dongwon/sub_l.jpg" },
+    ],
+    relatedLinks: [
+      { text: "디자인 시스템 가이드", url: DONGWON_DS_URL },
+      { text: "가이드 GitHub 저장소", url: "https://github.com/cozyoub/dongwon-pop-design-system" },
+    ],
+    // notionUrl: "TODO",
+    detailDescription:
+      "동원모빌리티 생산현장에서 사용하는 MES/POP 및 PDA 화면을 넥사크로 기반으로 구축한 프로젝트입니다. 4인 팀에서 디자인과 화면 퍼블리싱을 단독으로 맡아, 현장 작업자가 빠르게 상태를 파악하고 조작할 수 있는 UI를 설계했습니다. 화면별로 흩어져 있던 스타일을 넥사크로 UI 기준(디자인 시스템)으로 정리하고, 이를 바탕으로 실제 화면을 FDL로 직접 구현하며 디자인부터 구현까지 전 과정을 연결했습니다.",
+    solutionTag: ["Nexacro", "Figma", "디자인 시스템"],
+    scopeTags: [
+      { label: "디자인", color: "green" },
+      { label: "디자인 시스템", color: "pink" },
+      { label: "화면 구현", color: "coral" },
+    ],
+    contributionPercent: 100,
+  },
   {
     id: "dongyeon-snt",
     slug: "dongyeon-snt",

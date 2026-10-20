@@ -1010,6 +1010,132 @@ button.shortcut__arrow {
   color: #fff;
 }
 
+/* 강조 버튼 (예: 디자인 시스템 바로가기) */
+.project-sub__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 24px;
+  padding: 14px 26px;
+  border-radius: 999px;
+  border: 1px solid #1a1a1a;
+  background: #1a1a1a;
+  color: #fff;
+  font-family: var(--mono);
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+}
+
+.project-sub__cta:hover {
+  background: transparent;
+  color: #1a1a1a;
+}
+
+.project-sub__cta-arrow {
+  font-size: 16px;
+  transition: transform 0.2s;
+}
+
+.project-sub__cta:hover .project-sub__cta-arrow {
+  transform: translate(2px, -2px);
+}
+
+/* 디자인 시안 */
+.project-sub__gallery {
+  margin-top: 40px;
+  padding-top: 40px;
+  padding-bottom: 24px;
+  border-top: 1px solid #ddd;
+}
+
+.project-sub__gallery-title {
+  font-family: var(--mono);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #b0b0b0;
+  margin-bottom: 20px;
+}
+
+.project-sub__gallery-list {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+}
+
+.project-sub__gallery-item {
+  margin: 0;
+  min-width: 0;
+}
+
+.project-sub__gallery-img {
+  display: block;
+  overflow: hidden;
+  border-radius: 12px;
+  border: 1px solid #e5e5e5;
+  background: #f4f4f4;
+  aspect-ratio: 16 / 9;
+}
+
+.project-sub__gallery-img img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s;
+}
+
+.project-sub__gallery-img:hover img {
+  transform: scale(1.02);
+}
+
+.project-sub__gallery-caption {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 18px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.project-sub__gallery-toggle {
+  display: inline-flex;
+  border: 1px solid #1a1a1a;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.project-sub__gallery-toggle button {
+  padding: 5px 12px;
+  border: 0;
+  background: transparent;
+  color: #1a1a1a;
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.project-sub__gallery-toggle button[aria-pressed='true'] {
+  background: #1a1a1a;
+  color: #fff;
+}
+
+@media (max-width: 768px) {
+  .project-sub__gallery-list {
+    gap: 36px;
+  }
+
+  .project-sub__gallery-caption {
+    margin-top: 12px;
+  }
+}
+
 /* 주요 기능 시연 (영상) */
 .project-sub__demos {
   margin-top: 40px;

@@ -8,12 +8,12 @@ import useScrollSquish from "../hooks/useScrollSquish.jsx";
 gsap.registerPlugin(ScrollTrigger);
 
 const WORK_SECTION_ITEMS = [
+  { slug: "dongwon-mobility", description: "Nexacro | 디자인 · 디자인 시스템 · 화면 구현" },
   { slug: "dongyeon-snt", description: "Web | 디자인 · 퍼블리싱 · 기획" },
   { slug: "bnue-publishing", description: "Web | 디자인 · 퍼블리싱 · 기획" },
   { slug: "gimhae-culture", description: "Web | 디자인 · 퍼블리싱 · 기획" },
   { slug: "savings-bank-nft", description: "App | 디자인 · 퍼블리싱 · 기획" },
   { slug: "delta-t", description: "Web | 디자인 · 퍼블리싱 · 기획" },
-  { slug: "hoseo-theatre", description: "Web | 디자인 · 퍼블리싱 · 기획" },
 ];
 
 export default function Work() {
